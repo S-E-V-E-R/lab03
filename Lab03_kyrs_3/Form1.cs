@@ -54,7 +54,7 @@ namespace Lab03_kyrs_3
         byte[] arr_key = Encoding.Unicode.GetBytes(key);
         myShowToolTip(tb_Key, arr_key); // Створити підказку
         byte[] arr_cipher = myXOR(arr_text, arr_key);
-        //string cipher = BitConverter.ToString(arr_cipher).Replace(&quot;-&quot;, &quot;&quot;);
+        //cipher = BitConverter.ToString(arr_cipher).Replace("-", "");
         cipher = Encoding.Unicode.GetString(arr_cipher);
         tb_cipher.Text = cipher;
         myShowToolTip(tb_cipher, arr_cipher); // Створити підказку
