@@ -29,10 +29,17 @@ namespace Lab03_kyrs_3
             byte[] arr_cipher = new byte[len_text];
             for (int i = 0; i < len_text; i++)
 {
-                byte p = arr_text[i];
-                byte k = arr_key[i % len_key]; // mod
-                byte c = (byte)(p ^ k); // XOR
-                arr_cipher[i] = c;
+                if (len_key == 0)
+                {
+                    textBox_C_IN.Text = textBox_P_IN.Text;
+                }
+                if (len_key > 0)
+                {
+                    byte p = arr_text[i];
+                    byte k = arr_key[i % len_key]; // mod
+                    byte c = (byte)(p ^ k); // XOR
+                    arr_cipher[i] = c;
+                }
             }
             return arr_cipher;
         }
@@ -57,10 +64,8 @@ namespace Lab03_kyrs_3
     {
         if (string.IsNullOrEmpty(textBox_Key_IN.Text))
         {
-            textBox_P_OUT.Text = textBox_P_IN.Text;
-            MessageBox.Show(" Ви забули ввести ключ?");
+                MessageBox.Show(" Ви забули ввести ключ?");
             textBox_Key_IN.Focus();
-                textBox_Key_IN.Text = " ";
             }
         string cipher = myCipher(textBox_P_IN, textBox_Key_IN, textBox_C_IN); //зашифрування
         textBox_P_OUT.Text = textBox_C_IN.Text;
